@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Graft — The Business App for Tradespeople</title>
-    <meta name="description" content="Graft helps tradespeople manage bookings, invoices, clients and payments — all from one app. Built for plumbers, electricians, builders, barbers and more.">
+    <meta name="description"
+        content="Graft helps tradespeople manage bookings, invoices, clients and payments — all from one app. Built for plumbers, electricians, builders, barbers and more.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         :root {
             --gold: #F59E0B;
@@ -24,7 +33,9 @@
             --radius: 16px;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -36,189 +47,343 @@
 
         /* ─── NAV ────────────────────────────── */
         nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
             padding: 20px 0;
-            background: rgba(15,15,15,0.85);
+            background: rgba(15, 15, 15, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(245,158,11,0.1);
+            border-bottom: 1px solid rgba(245, 158, 11, 0.1);
         }
+
         .nav-inner {
-            max-width: 1200px; margin: 0 auto; padding: 0 24px;
-            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .logo { font-size: 24px; font-weight: 900; letter-spacing: -1px; }
-        .logo span { color: var(--gold); }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
         .nav-cta {
-            background: var(--gold); color: var(--dark);
-            padding: 10px 24px; border-radius: 100px;
-            font-weight: 700; font-size: 14px;
-            text-decoration: none; transition: all 0.3s;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s;
         }
-        .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+        .nav-cta:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+        }
 
         /* ─── HERO ───────────────────────────── */
         .hero {
             min-height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-            text-align: center; padding: 120px 24px 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
             position: relative;
         }
+
         .hero::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.12) 0%, transparent 60%);
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(245, 158, 11, 0.12) 0%, transparent 60%);
             pointer-events: none;
         }
-        .hero-content { max-width: 800px; position: relative; z-index: 1; }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
         .hero-badge {
             display: inline-block;
-            background: rgba(245,158,11,0.12);
-            border: 1px solid rgba(245,158,11,0.25);
-            padding: 8px 20px; border-radius: 100px;
-            font-size: 13px; font-weight: 600; color: var(--gold);
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gold);
             margin-bottom: 32px;
             animation: fadeInUp 0.6s ease;
         }
+
         .hero h1 {
             font-size: clamp(40px, 7vw, 72px);
-            font-weight: 900; letter-spacing: -2px;
-            line-height: 1.1; margin-bottom: 24px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 24px;
             animation: fadeInUp 0.6s ease 0.1s both;
         }
+
         .hero h1 .highlight {
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         .hero p {
             font-size: clamp(16px, 2vw, 20px);
-            color: var(--text-muted); max-width: 560px;
-            margin: 0 auto 40px; line-height: 1.7;
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
             animation: fadeInUp 0.6s ease 0.2s both;
         }
+
         .hero-actions {
-            display: flex; gap: 16px; justify-content: center;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
             flex-wrap: wrap;
             animation: fadeInUp 0.6s ease 0.3s both;
         }
+
         .btn-primary {
-            background: var(--gold); color: var(--dark);
-            padding: 16px 36px; border-radius: 100px;
-            font-weight: 800; font-size: 16px;
-            text-decoration: none; transition: all 0.3s;
-            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-weight: 800;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(245,158,11,0.25); }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(245, 158, 11, 0.25);
+        }
+
         .btn-secondary {
-            background: transparent; color: var(--text);
-            padding: 16px 36px; border-radius: 100px;
-            font-weight: 700; font-size: 16px;
-            text-decoration: none; transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.15);
+            background: transparent;
+            color: var(--text);
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
 
         /* ─── TRADES ─────────────────────────── */
         .trades {
             padding: 40px 24px;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             background: var(--dark-surface);
         }
+
         .trades p {
-            font-size: 13px; font-weight: 600; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
         }
+
         .trades-list {
-            display: flex; flex-wrap: wrap; gap: 16px;
-            justify-content: center; max-width: 900px; margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
+
         .trade-chip {
-            background: rgba(255,255,255,0.05);
-            padding: 8px 20px; border-radius: 100px;
-            font-size: 14px; font-weight: 500; color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
         }
 
         /* ─── FEATURES ───────────────────────── */
         .features {
             padding: 120px 24px;
-            max-width: 1200px; margin: 0 auto;
+            max-width: 1200px;
+            margin: 0 auto;
         }
+
         .features-header {
-            text-align: center; margin-bottom: 80px;
+            text-align: center;
+            margin-bottom: 80px;
         }
+
         .features-header h2 {
             font-size: clamp(28px, 4vw, 44px);
-            font-weight: 900; letter-spacing: -1px;
+            font-weight: 900;
+            letter-spacing: -1px;
             margin-bottom: 16px;
         }
+
         .features-header p {
-            color: var(--text-muted); font-size: 18px; max-width: 500px; margin: 0 auto;
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 500px;
+            margin: 0 auto;
         }
+
         .features-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
         }
+
         .feature-card {
             background: var(--dark-card);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: var(--radius); padding: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 36px;
             transition: all 0.3s;
         }
+
         .feature-card:hover {
-            border-color: rgba(245,158,11,0.2);
+            border-color: rgba(245, 158, 11, 0.2);
             transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
-        .feature-emoji { font-size: 40px; margin-bottom: 20px; display: block; }
+
+        .feature-emoji {
+            font-size: 40px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
         .feature-card h3 {
-            font-size: 20px; font-weight: 800; margin-bottom: 8px;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 8px;
         }
-        .feature-card p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
 
         /* ─── JOB COMPLETE ───────────────────── */
         .job-complete {
             padding: 120px 24px;
             background: var(--dark-surface);
         }
+
         .job-complete-inner {
-            max-width: 1000px; margin: 0 auto;
+            max-width: 1000px;
+            margin: 0 auto;
             text-align: center;
         }
+
         .job-complete h2 {
             font-size: clamp(28px, 4vw, 44px);
-            font-weight: 900; letter-spacing: -1px;
+            font-weight: 900;
+            letter-spacing: -1px;
             margin-bottom: 16px;
         }
-        .job-complete > .job-complete-inner > p {
-            color: var(--text-muted); font-size: 18px;
-            max-width: 500px; margin: 0 auto 60px;
+
+        .job-complete>.job-complete-inner>p {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 500px;
+            margin: 0 auto 60px;
         }
+
         .chain {
-            display: flex; flex-direction: column; gap: 16px;
-            max-width: 480px; margin: 0 auto 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 480px;
+            margin: 0 auto 48px;
         }
+
         .chain-step {
-            display: flex; align-items: center; gap: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
             background: var(--dark-card);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px; padding: 20px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 20px 24px;
             transition: all 0.3s;
         }
-        .chain-step:hover { border-color: var(--gold); }
+
+        .chain-step:hover {
+            border-color: var(--gold);
+        }
+
         .chain-step .step-num {
-            width: 36px; height: 36px; border-radius: 50%;
-            background: var(--gold); color: var(--dark);
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 14px; flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            flex-shrink: 0;
         }
+
         .chain-step .step-text {
-            font-weight: 600; font-size: 16px; text-align: left;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: left;
         }
-        .chain-step .step-text span { color: var(--text-muted); font-weight: 400; font-size: 13px; display: block; margin-top: 2px; }
-        .chain-arrow { color: var(--gold); font-size: 24px; text-align: center; }
+
+        .chain-step .step-text span {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 13px;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .chain-arrow {
+            color: var(--gold);
+            font-size: 24px;
+            text-align: center;
+        }
 
         /* ─── CTA ────────────────────────────── */
         .cta {
@@ -226,59 +391,114 @@
             text-align: center;
             position: relative;
         }
+
         .cta::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 50% 100%, rgba(245,158,11,0.08) 0%, transparent 60%);
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(245, 158, 11, 0.08) 0%, transparent 60%);
             pointer-events: none;
         }
-        .cta-inner { position: relative; z-index: 1; }
+
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+
         .cta h2 {
             font-size: clamp(28px, 5vw, 52px);
-            font-weight: 900; letter-spacing: -1.5px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
             margin-bottom: 20px;
         }
+
         .cta p {
-            color: var(--text-muted); font-size: 18px;
-            max-width: 480px; margin: 0 auto 40px;
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 480px;
+            margin: 0 auto 40px;
         }
 
         /* ─── FOOTER ─────────────────────────── */
         footer {
             padding: 40px 24px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
         }
-        footer p { color: var(--text-muted); font-size: 13px; }
-        footer a { color: var(--gold); text-decoration: none; }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
 
         /* ─── ANIMATIONS ─────────────────────── */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .reveal {
-            opacity: 0; transform: translateY(30px);
+            opacity: 0;
+            transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* ─── RESPONSIVE ─────────────────────── */
         @media (max-width: 640px) {
-            .hero-actions { flex-direction: column; align-items: center; }
-            .btn-primary, .btn-secondary { width: 100%; max-width: 300px; text-align: center; justify-content: center; }
-            .features-grid { grid-template-columns: 1fr; }
-            .chain { margin: 0 auto 32px; }
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chain {
+                margin: 0 auto 32px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Nav -->
     <nav>
         <div class="nav-inner">
             <div class="logo">⚡ <span>GRAFT</span></div>
-            <a href="#cta" class="nav-cta">Get Early Access</a>
+            <div style="display: flex; gap: 24px; align-items: center;">
+                <a href="how-to.html"
+                    style="color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">How
+                    to Use</a>
+                <a href="#cta" class="nav-cta">Get Early Access</a>
+            </div>
         </div>
     </nav>
 
@@ -287,7 +507,8 @@
         <div class="hero-content">
             <div class="hero-badge">🚀 Coming Soon — Join the Waitlist</div>
             <h1>Run your trade.<br><span class="highlight">Not your admin.</span></h1>
-            <p>Graft is the all-in-one business app for tradespeople. Bookings, invoices, clients, payments — sorted in seconds, not hours.</p>
+            <p>Graft is the all-in-one business app for tradespeople. Bookings, invoices, clients, payments — sorted in
+                seconds, not hours.</p>
             <div class="hero-actions">
                 <a href="#cta" class="btn-primary">⚡ Get Early Access</a>
                 <a href="#features" class="btn-secondary">See Features</a>
@@ -322,32 +543,38 @@
             <div class="feature-card reveal">
                 <span class="feature-emoji">📅</span>
                 <h3>Smart Scheduling</h3>
-                <p>Day, week and agenda views. Travel buffers between jobs. Drag to reschedule. Clients book via your shareable link — no app download needed.</p>
+                <p>Day, week and agenda views. Travel buffers between jobs. Drag to reschedule. Clients book via your
+                    shareable link — no app download needed.</p>
             </div>
             <div class="feature-card reveal">
                 <span class="feature-emoji">🧾</span>
                 <h3>One-Tap Invoicing</h3>
-                <p>Finish a job, tap once, invoice sent. VAT calculated. Payment link included. Voice-to-invoice AI coming soon — just describe the job.</p>
+                <p>Finish a job, tap once, invoice sent. VAT calculated. Payment link included. Voice-to-invoice AI
+                    coming soon — just describe the job.</p>
             </div>
             <div class="feature-card reveal">
                 <span class="feature-emoji">💬</span>
                 <h3>WhatsApp & SMS</h3>
-                <p>Booking confirmations, reminders, invoices and review requests — all sent via WhatsApp or text. No more chasing people.</p>
+                <p>Booking confirmations, reminders, invoices and review requests — all sent via WhatsApp or text. No
+                    more chasing people.</p>
             </div>
             <div class="feature-card reveal">
                 <span class="feature-emoji">👥</span>
                 <h3>Client Intelligence</h3>
-                <p>Smart profiles with notes, multiple addresses, tags (VIP, regular, problem). Lapsed client alerts. Late payer flags. Lifetime value tracking.</p>
+                <p>Smart profiles with notes, multiple addresses, tags (VIP, regular, problem). Lapsed client alerts.
+                    Late payer flags. Lifetime value tracking.</p>
             </div>
             <div class="feature-card reveal">
                 <span class="feature-emoji">💰</span>
                 <h3>Money Dashboard</h3>
-                <p>See what you've earned, what's owed, and what to set aside for tax — all in one glance. Log cash, card and bank transfer payments.</p>
+                <p>See what you've earned, what's owed, and what to set aside for tax — all in one glance. Log cash,
+                    card and bank transfer payments.</p>
             </div>
             <div class="feature-card reveal">
                 <span class="feature-emoji">⭐</span>
                 <h3>Review Engine</h3>
-                <p>Auto-request reviews after every job. Generate shareable links to Google and Facebook. Build your reputation on autopilot.</p>
+                <p>Auto-request reviews after every job. Generate shareable links to Google and Facebook. Build your
+                    reputation on autopilot.</p>
             </div>
         </div>
     </section>
@@ -356,7 +583,8 @@
     <section class="job-complete">
         <div class="job-complete-inner">
             <h2 class="reveal">The <span style="color: var(--gold)">Job Complete</span> button</h2>
-            <p class="reveal" style="color: var(--text-muted); font-size: 18px; max-width: 500px; margin: 0 auto 60px;">One tap. Five actions. Done in seconds.</p>
+            <p class="reveal" style="color: var(--text-muted); font-size: 18px; max-width: 500px; margin: 0 auto 60px;">
+                One tap. Five actions. Done in seconds.</p>
             <div class="chain reveal">
                 <div class="chain-step">
                     <div class="step-num">1</div>
@@ -387,7 +615,8 @@
         <div class="cta-inner">
             <h2 class="reveal">Ready to graft<br><span style="color: var(--gold)">smarter?</span></h2>
             <p class="reveal">Join the waitlist. Be the first to know when Graft launches.</p>
-            <a href="mailto:hello@graftassistant.com?subject=Graft%20Early%20Access&body=I'm%20interested%20in%20early%20access%20to%20Graft!%20My%20trade%20is:%20" class="btn-primary reveal" style="font-size: 18px; padding: 18px 44px;">
+            <a href="mailto:hello@graftassistant.com?subject=Graft%20Early%20Access&body=I'm%20interested%20in%20early%20access%20to%20Graft!%20My%20trade%20is:%20"
+                class="btn-primary reveal" style="font-size: 18px; padding: 18px 44px;">
                 ⚡ Get Early Access
             </a>
         </div>
@@ -412,4 +641,5 @@
     </script>
 
 </body>
+
 </html>
