@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <canvas id="c" width="1024" height="500"></canvas>
+    <script>
+        const c = document.getElementById('c');
+        const ctx = c.getContext('2d');
+
+        // Background
+        ctx.fillStyle = '#0F172A';
+        ctx.fillRect(0, 0, 1024, 500);
+
+        // Subtle radial glow
+        const grad = ctx.createRadialGradient(512, 250, 0, 512, 250, 400);
+        grad.addColorStop(0, 'rgba(245, 158, 11, 0.08)');
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1024, 500);
+
+        // Lightning bolt
+        ctx.font = '80px serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('⚡', 370, 270);
+
+        // GRAFT text
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = '900 72px Inter, Arial, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('GRAFT', 560, 260);
+
+        // Subtitle
+        ctx.fillStyle = '#F59E0B';
+        ctx.font = '600 22px Inter, Arial, sans-serif';
+        ctx.fillText('The all-in-one app for tradespeople', 512, 310);
+
+        // Small feature pills
+        ctx.font = '500 14px Inter, Arial, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.3)';
+        const pills = ['📅 Schedule', '👥 Clients', '📑 Invoices', '📊 Money', '⚙️ Settings'];
+        let x = 262;
+        pills.forEach(p => {
+            ctx.fillStyle = 'rgba(255,255,255,0.06)';
+            ctx.beginPath();
+            ctx.roundRect(x, 340, 100, 30, 15);
+            ctx.fill();
+            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            ctx.textAlign = 'center';
+            ctx.fillText(p, x + 50, 360);
+            x += 120;
+        });
+
+        // Download
+        const link = document.createElement('a');
+        link.download = 'feature_graphic_1024x500.png';
+        link.href = c.toDataURL('image/png');
+        link.click();
+        document.body.innerHTML = '<h1 style="color:green;font-family:sans-serif">✅ Saved! Check your Downloads folder.</h1>';
+    </script>
+</body>
+
+</html>
